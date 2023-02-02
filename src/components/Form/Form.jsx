@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-// import { Section, FormContact, Name, Input, AddBtn } from './Form.styled';
+import { FormContact, FormLabel, FormInput, AddBtn } from './Form.styled';
 
 export class Form extends Component {
   state = {
@@ -34,10 +34,10 @@ export class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nanoidIdName}>
+      <FormContact onSubmit={this.handleSubmit}>
+        <FormLabel htmlFor={this.nanoidIdName}>
           Name
-          <input
+          <FormInput
             value={this.state.name}
             id={this.nanoidIdName}
             onChange={this.handleChange}
@@ -47,10 +47,10 @@ export class Form extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <label htmlFor={this.nanoidIdNumber}>
+        </FormLabel>
+        <FormLabel htmlFor={this.nanoidIdNumber}>
           Number
-          <input
+          <FormInput
             value={this.state.number}
             id={this.nanoidIdNumber}
             onChange={this.handleChange}
@@ -60,11 +60,11 @@ export class Form extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label>
-        <button type="submit">
+        </FormLabel>
+        <AddBtn type="submit">
           Add contact
-        </button>
-      </form>
+        </AddBtn>
+      </FormContact>
     );
   }
 }

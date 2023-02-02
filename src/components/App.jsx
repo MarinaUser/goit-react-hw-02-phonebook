@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+
 import { Form } from "./Form/Form";
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
+
+import { Title, Contacts } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -15,10 +18,6 @@ export class App extends Component {
     filter: '',
     
   };
-
-  // formSubmitHandler = data => {
-  //   console.log(data);
-  // }
 
   addContact = (name, number) => {
     const { contacts } = this.state;
@@ -56,19 +55,23 @@ export class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
+  // formSubmitHandler = data => {
+  //   console.log(data);
+  // }
+
   render() {
     const visibleContacts = this.getVisibleContacts();
     return (
-      <div>
-      <h1>Phonebook</h1>
-      <Form onSubmit={this.addContact}></Form>
-      <h2>Contacts</h2>
+      <>
+      <Title>Phonebook</Title>
+        <Form onSubmit={this.addContact}></Form>
+      <Contacts>Contacts</Contacts>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
         <ContactList
           contacts={visibleContacts}
           onDeleteContact={this.deleteContact}
         />
-        </div>
+        </>
     );
   };
 };
